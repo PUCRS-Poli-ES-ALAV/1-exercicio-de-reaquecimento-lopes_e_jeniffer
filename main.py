@@ -10,7 +10,14 @@ print("6 x 4= ", exec1(6, 4))
 
 # 1. Soma de dois números naturais, através de incrementos sucessivos (Ex.: 3 + 2 = + + (+ + + 1)).
 def exec2(a, b):
-    pass
+    if (a > 0):
+        return 1 + exec2(a-1, b)
+    if (b > 0):
+        return 1 + exec2(a, b - 1)
+    
+    return 0
+
+print(exec2(4, 5))
 
 # Cálculo de 1 + 1/2 + 1/3 + 1/4 + ... + 1/(n-1) + 1/N.
 def exec3(n):
@@ -65,8 +72,48 @@ print(exec6(3, 4))
 # do vetor.
 
 def exec7(vetor):
-    # if (len(vetor) == 0 ):
-    #     return 0
+    if (len(vetor) == 0):
+        return 0
+    if (len(vetor) == 1):
+        return vetor[0]
+   
+    return vetor[0] + exec7(vetor[1:])
+
+
+print(exec7([1,2,3,4]))
+
+
+#    1. Verifique se uma palavra é palíndromo (Ex. aba, abcba, xyzzyx).
+def exec8(word):
+    if len(word) <= 1:
+        return True
+    if word[0] != word[-1]:
+        return False
+    
+    return exec8(word[1:(len(word) -1)])
+
+print(exec8("ana"))
+print(exec8("banana"))
+print(exec8("abcba"))
+
+
+# 1. Dado um número n, gere todas as possíveis combinações com as n primeiras letras
+# do alfabeto. Ex.: n = 3. Resposta: ABC, ACB, BAC, BCA, CAB, CBA.
+alfabeto = "abcdefghijklmnopqrstuvwxyz"
+def exec9(n):
     pass
 
-print(exec7([1,2,3]))
+
+
+# Defina uma sequência de Fibonacci generalizada, de f0 a f1 como sequência
+# fibg(f0, f1, 0), fibg(f0, f1, 1), fibg(f0, f1, 2), ..., onde:
+#          * fibg(f0, f1, 0) = f0
+#          * fibg(f0, f1, 1) = f1
+#          * fibg(f0, f1, n) = fibg(f0, f1, n − 1) + fibg(f0, f1, n − 2), se n > 1.
+def exec10(f0, f1, n):
+    if (n == 0):
+        return f0
+    if (n == 1):
+        return f1
+
+    return exec10(f0, f1, n - 1) + exec10(f0, f1, n-2)
