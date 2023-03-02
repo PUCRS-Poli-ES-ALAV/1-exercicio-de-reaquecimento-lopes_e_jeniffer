@@ -101,9 +101,28 @@ print(exec8("abcba"))
 # do alfabeto. Ex.: n = 3. Resposta: ABC, ACB, BAC, BCA, CAB, CBA.
 alfabeto = "abcdefghijklmnopqrstuvwxyz"
 def exec9(n):
-    pass
+    global alfabeto
+    alf = alfabeto[0: n]
 
+    return exec9_aux(alf)
+    
 
+def exec9_aux(alf):
+    if (len(alf) == 1):
+        return alf
+
+    combinacoes = []
+
+    for l in alf:
+        c = exec9_aux(alf.replace(l, ""))
+        for x in c:
+            combinacoes.append(l + x)
+    
+    return combinacoes
+    
+
+print(exec9(3))
+print(exec9(4))
 
 # Defina uma sequência de Fibonacci generalizada, de f0 a f1 como sequência
 # fibg(f0, f1, 0), fibg(f0, f1, 1), fibg(f0, f1, 2), ..., onde:
